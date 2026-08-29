@@ -1,0 +1,232 @@
+generated: '2026-08-29'
+method: probed
+source: https://www.stayalfred.com/
+name: Stay Alfred well-known + contract discovery probe
+description: >-
+  Negative probe record for Stay Alfred. Stay Alfred Inc. permanently ceased operations on
+  2020-05-20 after COVID-19 travel collapse wiped out its short-term-rental demand and a
+  committed funding round was withdrawn. Its former host stayalfred.com is still on the
+  original 2013 registration but the registrant is now shielded behind Domains By Proxy, the
+  nameservers were moved to Cloudflare, and the host no longer serves any Stay Alfred content:
+  every path returns a Cloudflare 301 into a rotating chain of unrelated third-party domains
+  (loganantiquemall.net, masonjarbrewing.com, northeastseafood.com, harvestkaplankaya.com).
+  No /.well-known/ path, no spec path and no docs path resolves to a document. No WellKnown,
+  SecurityTxt, AgentCard, LLMsTxt or OpenAPI pointer is emitted from this probe, and none
+  should ever be emitted from it in a later round.
+
+host_status:
+  host: www.stayalfred.com
+  controlled_by_provider: false
+  disposition: redirect-monetized
+  registrar: GoDaddy.com, LLC
+  registrant_organization: Domains By Proxy, LLC
+  domain_created: '2013-01-05'
+  domain_updated: '2026-02-26'
+  domain_expires: '2027-01-05'
+  nameservers:
+  - dorthy.ns.cloudflare.com
+  - toby.ns.cloudflare.com
+  note: >-
+    The registration predates the shutdown (2013) and was not dropped, but the domain has been
+    repointed: Cloudflare-hosted, privacy-shielded, and configured as a bulk redirector. A single
+    GET of the root returns HTTP 301 with Location pointing at an unrelated business site, and the
+    target ROTATES between requests, which is the signature of expired-traffic monetization rather
+    than a company web presence.
+
+redirect_chain_observed:
+- from: https://www.stayalfred.com/
+  status: 301
+  location: https://www.loganantiquemall.net/
+- from: https://stayalfred.com/
+  status: 301
+  location: https://www.masonjarbrewing.com/
+- from: https://www.stayalfred.com/
+  status: 301
+  location: https://northeastseafood.com/
+- from: https://northeastseafood.com/
+  status: 301
+  location: https://harvestkaplankaya.com/
+rotating_target: true
+rotating_target_note: >-
+  Four different destination hosts were observed across consecutive probes of the same URL. None
+  of them is related to Stay Alfred or to short-term rental. Treat every 301 as a miss.
+
+# Canonical shape read by well_known_docs() in score.rb: hosts[] -> documents[].
+hosts:
+- host: www.stayalfred.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 301
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 301
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 301
+    file: null
+  - path: /.well-known/api-catalog
+    status: 301
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 301
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 301
+    file: null
+  - path: /.well-known/agent.json
+    status: 301
+    file: null
+
+probe_detail:
+- path: /.well-known/security.txt
+  url: https://www.stayalfred.com/.well-known/security.txt
+  status: 301
+  content_type: text/html
+  document: false
+  result: miss
+- path: /.well-known/openid-configuration
+  url: https://www.stayalfred.com/.well-known/openid-configuration
+  status: 301
+  content_type: text/html
+  document: false
+  result: miss
+- path: /.well-known/oauth-authorization-server
+  url: https://www.stayalfred.com/.well-known/oauth-authorization-server
+  status: 301
+  content_type: text/html
+  document: false
+  result: miss
+- path: /.well-known/api-catalog
+  url: https://www.stayalfred.com/.well-known/api-catalog
+  status: 301
+  content_type: text/html
+  document: false
+  result: miss
+- path: /.well-known/ai-plugin.json
+  url: https://www.stayalfred.com/.well-known/ai-plugin.json
+  status: 301
+  content_type: text/html
+  document: false
+  result: miss
+- path: /.well-known/agent-card.json
+  url: https://www.stayalfred.com/.well-known/agent-card.json
+  status: 301
+  content_type: text/html
+  document: false
+  result: miss
+  note: >-
+    Cloudflare 301 redirect stub, not a JSON AgentCard object. No AgentCard pointer emitted.
+- path: /.well-known/agent.json
+  url: https://www.stayalfred.com/.well-known/agent.json
+  status: 301
+  content_type: text/html
+  document: false
+  result: miss
+  note: Legacy pre-0.3 path. Cloudflare 301 redirect stub, not a JSON AgentCard object.
+
+contract_discovery:
+  openapi:
+  - url: https://www.stayalfred.com/openapi.json
+    status: 301
+    parses_as_openapi: false
+    result: miss
+  - url: https://www.stayalfred.com/swagger.json
+    status: 301
+    parses_as_openapi: false
+    result: miss
+  graphql: []
+  mcp: []
+  wsdl: []
+  grpc: []
+  a2a_agent_card: []
+  api_hosts_resolved:
+  - host: api.stayalfred.com
+    dns: NXDOMAIN
+    status: null
+  - host: developer.stayalfred.com
+    dns: NXDOMAIN
+    status: null
+  - host: developers.stayalfred.com
+    dns: NXDOMAIN
+    status: null
+  - host: docs.stayalfred.com
+    dns: NXDOMAIN
+    status: null
+  - host: app.stayalfred.com
+    dns: NXDOMAIN
+    status: null
+  - host: book.stayalfred.com
+    dns: NXDOMAIN
+    status: null
+  note: >-
+    Every candidate API/docs/console host for this provider is NXDOMAIN. There is no host left to
+    probe for a REST, GraphQL, MCP, gRPC or SOAP contract.
+
+llms_txt:
+  url: https://www.stayalfred.com/llms.txt
+  status: 301
+  is_real_llms_txt: false
+  result: miss
+  note: Cloudflare 301 redirect stub. No LLMsTxt pointer emitted.
+
+robots_txt:
+  url: https://www.stayalfred.com/robots.txt
+  status: 200
+  bytes: 1836
+  first_party: false
+  note: >-
+    The only 200 on the entire host. It is Cloudflare's default Content-Signals boilerplate
+    ("As a condition of accessing this website, you agree to abide by the following content
+    signals..."), served by the edge rather than by an origin. It is not a Stay Alfred document
+    and carries no discovery information. Recorded so a later round does not mistake this single
+    200 for a live site.
+
+sitemap:
+  url: https://www.stayalfred.com/sitemap.xml
+  status: 301
+  urls: []
+  result: miss
+
+other_surfaces:
+- what: GitHub organization
+  url: https://api.github.com/orgs/stayalfred
+  status: 404
+  result: miss
+- what: GitHub organization
+  url: https://api.github.com/orgs/stay-alfred
+  status: 404
+  result: miss
+- what: GitHub organization
+  url: https://api.github.com/orgs/StayAlfred
+  status: 404
+  result: miss
+- what: npm registry search "stayalfred"
+  url: https://registry.npmjs.org/-/v1/search?text=stayalfred
+  status: 200
+  result: miss
+  note: 'Zero results ({"objects":[],"total":0}). No first-party npm packages exist.'
+- what: npm package "stayalfred"
+  url: https://registry.npmjs.org/stayalfred
+  status: 404
+  result: miss
+- what: PyPI package "stayalfred"
+  url: https://pypi.org/pypi/stayalfred/json
+  status: 404
+  result: miss
+- what: Forge Global secondary-market listing (the harvest source)
+  url: https://forgeglobal.com/stay-alfred_stock/
+  status: 403
+  result: blocked
+  note: >-
+    Forge returns a Cloudflare "Just a moment..." interstitial (HTTP 403, 5,843 bytes) to every
+    non-browser client, including a full browser-header retry. It is a secondary-market share
+    listing venue, not a Stay Alfred web presence, and is deliberately NOT wired as a Website
+    pointer (roadmap#56).
+
+conclusion: >-
+  Stay Alfred has no API surface to enrich and no host it still controls. The company never
+  published a developer program, public API, SDK, webhook catalog or machine-readable
+  specification during its 2011-2020 operating life; its distribution was through its own
+  consumer booking site and third-party OTA channels (Airbnb, Booking.com, Expedia), consuming
+  other companies' APIs rather than publishing one. This is a historical record, not a thin
+  profile. Any future round should re-read host_status before probing stayalfred.com again.

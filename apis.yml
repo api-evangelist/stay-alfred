@@ -1,23 +1,107 @@
 aid: stay-alfred
 name: Stay Alfred
-description: 'Stay Alfred is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  Stay Alfred Inc. was a Spokane, Washington short-term-rental and hospitality operator that
+  pioneered the "travel apartment" — full apartments in walkable downtown cores, leased in bulk
+  from multifamily building owners and operated with hotel-style consistency, cleaning and
+  guest support. Founded in 2011 by Jordan Allen, who was named EY Entrepreneur Of The Year for
+  the Pacific Northwest in 2019, the company grew to roughly 2,000-2,500 units across 28 to 33
+  U.S. markets including Denver, San Diego, Miami, New Orleans and Nashville, hosted around half
+  a million guests, and employed more than 230 people. It raised approximately $62M in total
+  venture funding, headlined by a $47M Series B in October 2018 led by Chicago real-estate
+  technology fund Nine Four Ventures. Distribution ran through its own consumer booking site and
+  the major online travel agencies, so Stay Alfred was an API CONSUMER rather than an API
+  publisher; it never operated a developer program, public API, SDK, webhook catalog or
+  machine-readable specification. COVID-19 ended it: the company closed every property
+  nationwide from 1 April 2020, a rescue funding round was withdrawn at the last minute, and on
+  20 May 2020 Stay Alfred announced it would close permanently, winding down through mid-2020
+  while it had been on track for roughly $100M in revenue that year. The stayalfred.com domain
+  is still on its original 2013 registration but is no longer controlled by the company: it is
+  privacy-shielded, Cloudflare-hosted, and every path now 301-redirects into a rotating chain of
+  unrelated third-party sites. This profile is retained as a historical record; there is no API
+  surface to enrich.
 url: https://raw.githubusercontent.com/api-evangelist/stay-alfred/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
 x-tier: stub
-x-tier-reason: harvest
+x-tier-reason: defunct-no-api-surface
+x-status: defunct
+x-founded: '2011'
+x-headquarters: Spokane, Washington, United States
+x-founder: Jordan Allen
+x-total-funding-usd: 62000000
+x-shutdown-date: '2020-05-20'
+x-shutdown-note: >-
+  Suspended all operations nationwide on 1 April 2020 because of the COVID-19 collapse in travel
+  demand, then announced a permanent closure on 20 May 2020 after investors withdrew a committed
+  rescue round. More than 230 employees were let go.
+x-domain-status: repointed
+x-domain-note: >-
+  stayalfred.com retains its original 2013-01-05 registration and has not been dropped, but the
+  registrant is now shielded behind Domains By Proxy, the nameservers were moved to Cloudflare,
+  and the host serves no Stay Alfred content. Every path — including /openapi.json and every
+  /.well-known/ path — returns a Cloudflare HTTP 301 whose Location ROTATES between unrelated
+  business sites (loganantiquemall.net, masonjarbrewing.com, northeastseafood.com,
+  harvestkaplankaya.com). The only 200 on the host is /robots.txt, which is Cloudflare's default
+  Content-Signals boilerplate served by the edge. See well-known/stay-alfred-well-known.yml. It
+  is NOT the Stay Alfred company site and is deliberately not wired as a Website pointer.
+x-secondary-market-listing: https://forgeglobal.com/stay-alfred_stock/
+x-secondary-market-listing-note: >-
+  The Forge Global page is the harvest source for this repo, not a company web presence. It
+  answers HTTP 403 (Cloudflare interstitial) to every non-browser client. Per roadmap#56 a
+  trading-venue listing is not wired as a Website pointer, because a live 200 from a venue would
+  earn discoverability credit the defunct company does not have.
 specificationVersion: '0.20'
 created: '2026-08-29'
 modified: '2026-08-29'
 tags:
 - Company
+- Defunct
+- Travel
+- Hospitality
+- Lodging
+- Short-Term Rental
+- Vacation Rental
+- Corporate Housing
+- Accommodations
+- Real Estate
+- Consumer
 apis: []
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
-common:
-- type: Website
-  url: https://forgeglobal.com/stay-alfred_stock/
+common: []
+x-coverage:
+  state: none
+  reason: defunct
+  detail: >-
+    Stay Alfred Inc. permanently closed on 20 May 2020 and the stayalfred.com host is no longer
+    controlled by the company — every path, including /openapi.json and every /.well-known/ path,
+    returns a Cloudflare 301 into a rotating set of unrelated third-party domains, while
+    api./developer./docs./app.stayalfred.com are all NXDOMAIN and no GitHub organization or
+    package-registry namespace ever existed.
+  evidence:
+  - url: https://www.stayalfred.com/
+    status: 301
+  - url: https://www.stayalfred.com/openapi.json
+    status: 301
+  - url: https://www.stayalfred.com/.well-known/agent-card.json
+    status: 301
+  - url: https://www.stayalfred.com/.well-known/security.txt
+    status: 301
+  - url: https://www.stayalfred.com/robots.txt
+    status: 200
+  - url: https://api.github.com/orgs/stayalfred
+    status: 404
+  - url: https://registry.npmjs.org/stayalfred
+    status: 404
+  - url: https://forgeglobal.com/stay-alfred_stock/
+    status: 403
+  checked: '2026-08-29'
+x-enrichment:
+  date: '2026-08-29'
+  status: minimal
+  artifacts_added: 1
+  pass: local-v1
