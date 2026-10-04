@@ -64,7 +64,7 @@ tags:
 - Vacation Rentals
 - Corporate Housing
 - Accommodation
-- Real-Estate
+- Real Estate
 - Consumer
 tags_raw:
 - Company
@@ -78,6 +78,7 @@ tags_raw:
 - Accommodations
 - Real Estate
 - Consumer
+- Real-Estate
 apis: []
 maintainers:
 - FN: Kin Lane
